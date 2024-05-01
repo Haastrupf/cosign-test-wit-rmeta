@@ -1,6 +1,7 @@
 FROM cgr.dev/chainguard/python:latest-dev as builder
 
 COPY aanjoorin-arc-app.2024-04-22.private-key.pem /usr/local/share/ca-certificates/
+RUN chmod 644 /usr/local/share/ca-certificates/aanjoorin-arc-app.2024-04-22.private-key.pem && update-ca-certificates
 
 WORKDIR /app
 
