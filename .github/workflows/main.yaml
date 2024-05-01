@@ -65,4 +65,4 @@ jobs:
           for tag in ${TAGS}; do
             images+="${tag}@${DIGEST} "
           done
-          cosign sign ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
+          cosign sign -y ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
