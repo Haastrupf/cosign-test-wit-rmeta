@@ -53,12 +53,11 @@ jobs:
           images: ghcr.io/sigstore/sample-honk
           tags: type=sha,format=long
 
-      - name: Build and Push container images
-        uses: docker/build-push-action@v4.0.0
+      - name: Build Docker image
         id: build-and-push
-        with:
-          push: true
-          tags: ${{ steps.docker_meta.outputs.tags }}
+        run: |
+          docker build -t ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }} .
+          docker push ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
               
       - name: Sign image with a key
         run: |
