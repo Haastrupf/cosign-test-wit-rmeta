@@ -1,5 +1,4 @@
 name: Build, Push and Sign Docker Image
-
 on:
   push:
     branches:
